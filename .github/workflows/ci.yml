@@ -3,34 +3,34 @@ name: Docker CI/CD
 on:
   push:
     branches:
-      - main   # Exécuter la pipeline à chaque push sur `main`
+      - main 
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1 : Vérifier le code source
+      
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Étape 2 : Installer Docker
+     
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      # Étape 3 : Construire l'image Docker
+     
       - name: Build Docker image
         run: |
           docker build -t simple-http-server .
 
-      # Étape 4 : Connexion à Docker Hub avec un token sécurisé
+     
       - name: Log in to DockerHub
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         run: echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-      # Étape 5 : Taguer et pousser l'image vers DockerHub
+     
       - name: Push to DockerHub
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
