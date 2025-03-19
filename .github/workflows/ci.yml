@@ -1,0 +1,21 @@
+name: Docker CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      - name: Connexion à DockerHub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Construction et push de l'image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/simple-http-server:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/simple-http-server:latest
