@@ -1,0 +1,27 @@
+image: docker:latest
+
+variables:
+  IMAGE_NAME: "seydoucoder/simple-http-server"
+  IMAGE_TAG: "v1.0"
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - push
+
+before_script:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
+
+push:
+  stage: push
+  script:
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+    - docker push $IMAGE_NAME:latest
