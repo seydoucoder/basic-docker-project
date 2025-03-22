@@ -118,10 +118,4 @@ docker run -p 8000:8000 <nom_utilisateur>/simple-http-server:v1.0
 
 ---
 
-## **Félicitations !**
-
-Tu as maintenant un **serveur HTTP Dockerisé** avec une **CI/CD GitHub Actions** pour publier automatiquement l’image sur **DockerHub** !
-
----
-
 ### Auteur : **El Hadji Seydou Nourou Kandji**
