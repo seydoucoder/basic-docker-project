@@ -38,7 +38,6 @@ Accède ensuite au serveur via :
 
 ## **3. Taguer et Pousser l’image sur DockerHub**
 
-Si tu veux publier ton image sur **DockerHub**, remplace `doucodese` par ton **nom d’utilisateur DockerHub**, puis suis ces étapes :
 
 ### **Connexion à DockerHub**
 
