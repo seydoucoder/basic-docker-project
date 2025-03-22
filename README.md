@@ -93,7 +93,7 @@ Lors d’un `git push` sur `main`, GitHub Actions :
 
 ---
 
-## **5. Lancer avec Docker Compose (Optionnel)**
+## **5. Lancer avec Docker Compose **
 
 Si tu préfères gérer le conteneur avec **Docker Compose**, utilise :
 
